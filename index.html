@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar Preloader in Website using CSS, Vanilla Javascript and GSAP</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body onload="move()">
+    <div id="preloader">
+        <div id="percent">1%</div>
+        <div id="bar">
+            <div id="barconfrm"></div>
+        </div>
+
+    </div>
+    <div class="container">
+        <h1>Taimoor Shahzada</h1>
+    </div>
+    <script>
+        const tll = gsap.timeline({
+            paused: "true"
+        });
+        tll.to("#percent, #bar",{
+            duration:.2,
+            opacity: 0,
+            zIndex: -1
+        });
+        tll.to("#preloader",{
+            duration: .8,
+            width: "0%"
+        });
+        tll.from(".container",{
+            duration: 1.5,
+            y: "-150%"
+        },"-=.2");
+        tll.to(".container h1",{
+            opacity:1,
+            textShadow: "12px 20px rgba(255,255,255,0.23)",
+            skewY: 10,
+            y: "10%",
+            stagger: {
+                amount: .4
+            }
+        });
+        var width = 1;
+        var bar = document.getElementById("barconfrm");
+        var id;
+        function move(){
+            id = setInterval(frame,10);
+
+        }
+        function frame(){
+            if(width>=100){
+                clearInterval(id);
+                tll.play();
+            }
+            else{
+                width++;
+                bar.style.width = width + "%";
+                document.getElementById("percent").innerHTML = width + "%";
+            }
+        }
+    </script>
+</body>
+</html>

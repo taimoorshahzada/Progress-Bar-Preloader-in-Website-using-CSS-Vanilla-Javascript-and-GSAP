@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+#preloader{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    background-color: #0f0f0f;
+    flex-direction: column;
+
+}
+#percent{
+    color: white;
+    font-family: 'Neutral Face';
+}
+#bar{
+    width: 60%;
+    margin-top: 20px;
+}
+#barconfrm{
+    width: 1%;
+    padding: 1px 0px;
+    background-color: white;
+
+}
+.container{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: gray;
+    
+}
+.container h1{
+    font-family: 'Monument';
+    text-transform: uppercase;
+    font-size: 40px;
+    opacity: 0;
+}
